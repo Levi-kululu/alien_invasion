@@ -29,15 +29,12 @@ class AlienInvasion:
         self.ship = Ship(self)
         # 子弹存储
         self.bullets = pygame.sprite.Group()
-        # 是否开火
-        self.is_openFired = False
 
     def run_game(self):
         """开始游戏的主循环"""
         while True:
             self._check_events()
             self.ship.update_position()
-            self._create_bullet()
             self._update_bullets()
             self._update_screen()
 
@@ -61,8 +58,6 @@ class AlienInvasion:
             self.ship.moving_up = False
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = False
-        elif event.key == pygame.K_SPACE:
-            self.is_openFired = False
 
     def _check_keydown_events(self, event):
         """按下按键"""
@@ -75,14 +70,13 @@ class AlienInvasion:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = True
         elif event.key == pygame.K_SPACE:
-            self.is_openFired = True
+            self._create_bullet()
 
     def _create_bullet(self):
         """创建一颗子弹，并将其加入编组bullets中"""
-        if self.is_openFired:
-            if len(self.bullets) < self.settings.bullet_maxNum:
-                new_bullet = Bullet(self)
-                self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullet_maxNum:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     def _update_bullets(self):
         """更新子弹位置并删除消失的子弹"""
