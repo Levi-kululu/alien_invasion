@@ -1,2 +1,2 @@
 # alien_invasion
-""Create a new project""
+"An interesting pygame"
