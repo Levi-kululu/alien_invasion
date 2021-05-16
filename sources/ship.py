@@ -18,7 +18,7 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
         # 加载飞船并且获得外接矩形
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load("../images/ship.bmp")
         self.rect = self.image.get_rect()
         # 对每一艘新飞船，其默认位置为底部中央
         self.rect.midbottom = self.screen_rect.midbottom

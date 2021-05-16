@@ -11,7 +11,7 @@ class Bullet(Sprite):
     """飞船子弹发射类"""
 
     def __init__(self, ai_game):
-        """创建子弹"""
+        """创建子弹,传入参数:Alien_invasion"""
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
